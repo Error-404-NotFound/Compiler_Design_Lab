@@ -1,0 +1,1280 @@
+ssl11@CSE-SSL-11:~/Desktop$ cd Desktop
+bash: cd: Desktop: No such file or directory
+ssl11@CSE-SSL-11:~/Desktop$ mkdir CS22B028
+ssl11@CSE-SSL-11:~/Desktop$ cd CS22B028/
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex text.l
+lex: can't open text.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+lex.yy.c  test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c 
+/usr/bin/ld: /tmp/ccHA2UI3.o: in function `yylex':
+lex.yy.c:(.text+0x4a2): undefined reference to `yywrap'
+/usr/bin/ld: /tmp/ccHA2UI3.o: in function `input':
+lex.yy.c:(.text+0x10b2): undefined reference to `yywrap'
+collect2: error: ld returned 1 exit status
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+a.out  lex.yy.c  test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out ababa
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+ababa 
+
+Token: ababa
+AbbA 
+
+Token: AbbA
+abbabb abbaba
+
+Token: abbabb 
+Token: abbaba
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+Abbab
+Token: Abbab
+
+Abbabba bBBBbBAbabab
+Token: Abbabba
+ Token: bBBBbBAbabab
+
+abbbabababBAbBabBAb babbabaBABAB ababaxxbaxbbaxbax
+Token: abbbabababBAbBabBAb
+ Token: babbabaBABAB
+ Token: ababa
+xxToken: ba
+xToken: bba
+xToken: ba
+x
+^[[A^[[A^[[B^[[B^[[B^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+Abba
+Token: Abba
+Abbbaba 
+Token: Abbbaba
+ababab ababa
+Token: ababab
+Token: ababa
+ababab zzbxbx
+Token: ababab
+zzToken: b
+xToken: b
+x^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi Makefile
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make
+make: 'a.out' is up to date.
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+a.out  lex.yy.c  Makefile  test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+abbabb
+Token: abbabb
+mv ^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ mv Makefile myfile.mk
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make
+make: *** No targets specified and no makefile found.  Stop.
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk
+make: 'a.out' is up to date.
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ touch lex.yy.c
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ touch test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ touch lex.yy.c 
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi myfile.mk 
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+make: 'a.out' is up to date.
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ touch test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./aout
+bash: ./aout: No such file or directory
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+ABABBA
+Token: ABABBA
+BABABA
+Token: BABABA
+cccc
+ccccc
+Acbca
+Token: A
+Token: b
+Token: a
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+Abbbab
+
+Reject:^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test,l
+
+[1]+  Stopped                 vi test,l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+test.l: In function ‘check’:
+test.l:33:27: error: request for member ‘length’ in something not a structure or union
+   33 |         for(int i=0;i<*inp.length;i++){
+      |                           ^
+test.l:34:20: error: invalid type argument of unary ‘*’ (have ‘int’)
+   34 |                 if(*inp[i]=='a') a++;
+      |                    ^~~~~~~
+make: *** [myfile.mk:2: a.out] Error 1
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+test.l: In function ‘check’:
+test.l:33:27: error: request for member ‘size’ in something not a structure or union
+   33 |         for(int i=0;i<*inp.size();i++){
+      |                           ^
+test.l:34:20: error: invalid type argument of unary ‘*’ (have ‘int’)
+   34 |                 if(*inp[i]=='a') a++;
+      |                    ^~~~~~~
+make: *** [myfile.mk:2: a.out] Error 1
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+abab
+Token: abab
+aaab 
+
+Reject^C 
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ make -f myfile.mk fname=test
+lex test.l
+gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+abab
+Token: abab
+aaab
+Reject
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ dir
+a  a.out  lex.yy.c  myfile.mk  q1a.l  test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+In file included from lex.yy.c:463:
+/usr/include/unistd.h: In function ‘sahihai’:
+/usr/include/unistd.h:255:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘typedef’
+  255 | typedef __useconds_t useconds_t;
+      | ^~~~~~~
+/usr/include/unistd.h:274:21: error: storage class specified for parameter ‘socklen_t’
+  274 | typedef __socklen_t socklen_t;
+      |                     ^~~~~~~~~
+/usr/include/unistd.h:287:12: error: storage class specified for parameter ‘access’
+  287 | extern int access (const char *__name, int __type) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:309:12: error: storage class specified for parameter ‘faccessat’
+  309 | extern int faccessat (int __fd, const char *__file, int __type, int __flag)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:339:16: error: storage class specified for parameter ‘lseek’
+  339 | extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:358:12: error: storage class specified for parameter ‘close’
+  358 | extern int close (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:363:13: error: storage class specified for parameter ‘closefrom’
+  363 | extern void closefrom (int __lowfd) __THROW;
+      |             ^~~~~~~~~
+/usr/include/unistd.h:371:16: error: storage class specified for parameter ‘read’
+  371 | extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur
+      |                ^~~~
+/usr/include/unistd.h:378:16: error: storage class specified for parameter ‘write’
+  378 | extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur
+      |                ^~~~~
+/usr/include/unistd.h:389:16: error: storage class specified for parameter ‘pread’
+  389 | extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,
+      |                ^~~~~
+/usr/include/unistd.h:398:16: error: storage class specified for parameter ‘pwrite’
+  398 | extern ssize_t pwrite (int __fd, const void *__buf, size_t __n,
+      |                ^~~~~~
+/usr/include/unistd.h:437:12: error: storage class specified for parameter ‘pipe’
+  437 | extern int pipe (int __pipedes[2]) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:452:21: error: storage class specified for parameter ‘alarm’
+  452 | extern unsigned int alarm (unsigned int __seconds) __THROW;
+      |                     ^~~~~
+/usr/include/unistd.h:464:21: error: storage class specified for parameter ‘sleep’
+  464 | extern unsigned int sleep (unsigned int __seconds);
+      |                     ^~~~~
+/usr/include/unistd.h:472:21: error: storage class specified for parameter ‘ualarm’
+  472 | extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
+      |                     ^~~~~~
+/usr/include/unistd.h:480:12: error: storage class specified for parameter ‘usleep’
+  480 | extern int usleep (__useconds_t __useconds);
+      |            ^~~~~~
+/usr/include/unistd.h:489:12: error: storage class specified for parameter ‘pause’
+  489 | extern int pause (void);
+      |            ^~~~~
+/usr/include/unistd.h:493:12: error: storage class specified for parameter ‘chown’
+  493 | extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~
+/usr/include/unistd.h:498:12: error: storage class specified for parameter ‘fchown’
+  498 | extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:503:12: error: storage class specified for parameter ‘lchown’
+  503 | extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~~
+/usr/include/unistd.h:511:12: error: storage class specified for parameter ‘fchownat’
+  511 | extern int fchownat (int __fd, const char *__file, __uid_t __owner,
+      |            ^~~~~~~~
+/usr/include/unistd.h:517:12: error: storage class specified for parameter ‘chdir’
+  517 | extern int chdir (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:521:12: error: storage class specified for parameter ‘fchdir’
+  521 | extern int fchdir (int __fd) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:531:14: error: storage class specified for parameter ‘getcwd’
+  531 | extern char *getcwd (char *__buf, size_t __size) __THROW __wur;
+      |              ^~~~~~
+/usr/include/unistd.h:545:14: error: storage class specified for parameter ‘getwd’
+  545 | extern char *getwd (char *__buf)
+      |              ^~~~~
+/usr/include/unistd.h:552:12: error: storage class specified for parameter ‘dup’
+  552 | extern int dup (int __fd) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:555:12: error: storage class specified for parameter ‘dup2’
+  555 | extern int dup2 (int __fd, int __fd2) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:564:15: error: storage class specified for parameter ‘__environ’
+  564 | extern char **__environ;
+      |               ^~~~~~~~~
+/usr/include/unistd.h:572:12: error: storage class specified for parameter ‘execve’
+  572 | extern int execve (const char *__path, char *const __argv[],
+      |            ^~~~~~
+/usr/include/unistd.h:578:12: error: storage class specified for parameter ‘fexecve’
+  578 | extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
+      |            ^~~~~~~
+/usr/include/unistd.h:584:12: error: storage class specified for parameter ‘execv’
+  584 | extern int execv (const char *__path, char *const __argv[])
+      |            ^~~~~
+/usr/include/unistd.h:589:12: error: storage class specified for parameter ‘execle’
+  589 | extern int execle (const char *__path, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:594:12: error: storage class specified for parameter ‘execl’
+  594 | extern int execl (const char *__path, const char *__arg, ...)
+      |            ^~~~~
+/usr/include/unistd.h:599:12: error: storage class specified for parameter ‘execvp’
+  599 | extern int execvp (const char *__file, char *const __argv[])
+      |            ^~~~~~
+/usr/include/unistd.h:605:12: error: storage class specified for parameter ‘execlp’
+  605 | extern int execlp (const char *__file, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:619:12: error: storage class specified for parameter ‘nice’
+  619 | extern int nice (int __inc) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:624:13: error: storage class specified for parameter ‘_exit’
+  624 | extern void _exit (int __status) __attribute__ ((__noreturn__));
+      |             ^~~~~
+In file included from lex.yy.c:463:
+/usr/include/unistd.h:633:17: error: storage class specified for parameter ‘pathconf’
+  633 | extern long int pathconf (const char *__path, int __name)
+      |                 ^~~~~~~~
+/usr/include/unistd.h:637:17: error: storage class specified for parameter ‘fpathconf’
+  637 | extern long int fpathconf (int __fd, int __name) __THROW;
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:640:17: error: storage class specified for parameter ‘sysconf’
+  640 | extern long int sysconf (int __name) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:644:15: error: storage class specified for parameter ‘confstr’
+  644 | extern size_t confstr (int __name, char *__buf, size_t __len) __THROW
+      |               ^~~~~~~
+/usr/include/unistd.h:650:16: error: storage class specified for parameter ‘getpid’
+  650 | extern __pid_t getpid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:653:16: error: storage class specified for parameter ‘getppid’
+  653 | extern __pid_t getppid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:656:16: error: storage class specified for parameter ‘getpgrp’
+  656 | extern __pid_t getpgrp (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:659:16: error: storage class specified for parameter ‘__getpgid’
+  659 | extern __pid_t __getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:661:16: error: storage class specified for parameter ‘getpgid’
+  661 | extern __pid_t getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:668:12: error: storage class specified for parameter ‘setpgid’
+  668 | extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:682:12: error: storage class specified for parameter ‘setpgrp’
+  682 | extern int setpgrp (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:689:16: error: storage class specified for parameter ‘setsid’
+  689 | extern __pid_t setsid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:693:16: error: storage class specified for parameter ‘getsid’
+  693 | extern __pid_t getsid (__pid_t __pid) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:697:16: error: storage class specified for parameter ‘getuid’
+  697 | extern __uid_t getuid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:700:16: error: storage class specified for parameter ‘geteuid’
+  700 | extern __uid_t geteuid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:703:16: error: storage class specified for parameter ‘getgid’
+  703 | extern __gid_t getgid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:706:16: error: storage class specified for parameter ‘getegid’
+  706 | extern __gid_t getegid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:711:12: error: storage class specified for parameter ‘getgroups’
+  711 | extern int getgroups (int __size, __gid_t __list[]) __THROW __wur
+      |            ^~~~~~~~~
+/usr/include/unistd.h:722:12: error: storage class specified for parameter ‘setuid’
+  722 | extern int setuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:727:12: error: storage class specified for parameter ‘setreuid’
+  727 | extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:732:12: error: storage class specified for parameter ‘seteuid’
+  732 | extern int seteuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:739:12: error: storage class specified for parameter ‘setgid’
+  739 | extern int setgid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:744:12: error: storage class specified for parameter ‘setregid’
+  744 | extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:749:12: error: storage class specified for parameter ‘setegid’
+  749 | extern int setegid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:778:16: error: storage class specified for parameter ‘fork’
+  778 | extern __pid_t fork (void) __THROWNL;
+      |                ^~~~
+/usr/include/unistd.h:786:16: error: storage class specified for parameter ‘vfork’
+  786 | extern __pid_t vfork (void) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:799:14: error: storage class specified for parameter ‘ttyname’
+  799 | extern char *ttyname (int __fd) __THROW;
+      |              ^~~~~~~
+/usr/include/unistd.h:803:12: error: storage class specified for parameter ‘ttyname_r’
+  803 | extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:809:12: error: storage class specified for parameter ‘isatty’
+  809 | extern int isatty (int __fd) __THROW;
+      |            ^~~~~~
+/usr/include/unistd.h:814:12: error: storage class specified for parameter ‘ttyslot’
+  814 | extern int ttyslot (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:819:12: error: storage class specified for parameter ‘link’
+  819 | extern int link (const char *__from, const char *__to)
+      |            ^~~~
+/usr/include/unistd.h:825:12: error: storage class specified for parameter ‘linkat’
+  825 | extern int linkat (int __fromfd, const char *__from, int __tofd,
+      |            ^~~~~~
+/usr/include/unistd.h:832:12: error: storage class specified for parameter ‘symlink’
+  832 | extern int symlink (const char *__from, const char *__to)
+      |            ^~~~~~~
+/usr/include/unistd.h:838:16: error: storage class specified for parameter ‘readlink’
+  838 | extern ssize_t readlink (const char *__restrict __path,
+      |                ^~~~~~~~
+/usr/include/unistd.h:847:12: error: storage class specified for parameter ‘symlinkat’
+  847 | extern int symlinkat (const char *__from, int __tofd,
+      |            ^~~~~~~~~
+/usr/include/unistd.h:851:16: error: storage class specified for parameter ‘readlinkat’
+  851 | extern ssize_t readlinkat (int __fd, const char *__restrict __path,
+      |                ^~~~~~~~~~
+/usr/include/unistd.h:858:12: error: storage class specified for parameter ‘unlink’
+  858 | extern int unlink (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:862:12: error: storage class specified for parameter ‘unlinkat’
+  862 | extern int unlinkat (int __fd, const char *__name, int __flag)
+      |            ^~~~~~~~
+/usr/include/unistd.h:867:12: error: storage class specified for parameter ‘rmdir’
+  867 | extern int rmdir (const char *__path) __THROW __nonnull ((1));
+      |            ^~~~~
+/usr/include/unistd.h:871:16: error: storage class specified for parameter ‘tcgetpgrp’
+  871 | extern __pid_t tcgetpgrp (int __fd) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:874:12: error: storage class specified for parameter ‘tcsetpgrp’
+  874 | extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __THROW;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:881:14: error: storage class specified for parameter ‘getlogin’
+  881 | extern char *getlogin (void);
+      |              ^~~~~~~~
+/usr/include/unistd.h:889:12: error: storage class specified for parameter ‘getlogin_r’
+  889 | extern int getlogin_r (char *__name, size_t __name_len) __nonnull ((1))
+      |            ^~~~~~~~~~
+/usr/include/unistd.h:895:12: error: storage class specified for parameter ‘setlogin’
+  895 | extern int setlogin (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:27,
+                 from /usr/include/unistd.h:903,
+                 from lex.yy.c:463:
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:36:14: error: storage class specified for parameter ‘optarg’
+   36 | extern char *optarg;
+      |              ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:50:12: error: storage class specified for parameter ‘optind’
+   50 | extern int optind;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:55:12: error: storage class specified for parameter ‘opterr’
+   55 | extern int opterr;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:59:12: error: storage class specified for parameter ‘optopt’
+   59 | extern int optopt;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:91:12: error: storage class specified for parameter ‘getopt’
+   91 | extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
+      |            ^~~~~~
+In file included from lex.yy.c:463:
+/usr/include/unistd.h:911:12: error: storage class specified for parameter ‘gethostname’
+  911 | extern int gethostname (char *__name, size_t __len) __THROW __nonnull ((1))
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:919:12: error: storage class specified for parameter ‘sethostname’
+  919 | extern int sethostname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:924:12: error: storage class specified for parameter ‘sethostid’
+  924 | extern int sethostid (long int __id) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:930:12: error: storage class specified for parameter ‘getdomainname’
+  930 | extern int getdomainname (char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:933:12: error: storage class specified for parameter ‘setdomainname’
+  933 | extern int setdomainname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:939:12: error: storage class specified for parameter ‘vhangup’
+  939 | extern int vhangup (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:942:12: error: storage class specified for parameter ‘revoke’
+  942 | extern int revoke (const char *__file) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:950:12: error: storage class specified for parameter ‘profil’
+  950 | extern int profil (unsigned short int *__sample_buffer, size_t __size,
+      |            ^~~~~~
+/usr/include/unistd.h:958:12: error: storage class specified for parameter ‘acct’
+  958 | extern int acct (const char *__name) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:962:14: error: storage class specified for parameter ‘getusershell’
+  962 | extern char *getusershell (void) __THROW;
+      |              ^~~~~~~~~~~~
+/usr/include/unistd.h:963:13: error: storage class specified for parameter ‘endusershell’
+  963 | extern void endusershell (void) __THROW; /* Discard cached info.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:964:13: error: storage class specified for parameter ‘setusershell’
+  964 | extern void setusershell (void) __THROW; /* Rewind and re-read the file.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:970:12: error: storage class specified for parameter ‘daemon’
+  970 | extern int daemon (int __nochdir, int __noclose) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:977:12: error: storage class specified for parameter ‘chroot’
+  977 | extern int chroot (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:981:14: error: storage class specified for parameter ‘getpass’
+  981 | extern char *getpass (const char *__prompt) __nonnull ((1));
+      |              ^~~~~~~
+/usr/include/unistd.h:989:12: error: storage class specified for parameter ‘fsync’
+  989 | extern int fsync (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:1002:17: error: storage class specified for parameter ‘gethostid’
+ 1002 | extern long int gethostid (void);
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:1005:13: error: storage class specified for parameter ‘sync’
+ 1005 | extern void sync (void) __THROW;
+      |             ^~~~
+/usr/include/unistd.h:1011:12: error: storage class specified for parameter ‘getpagesize’
+ 1011 | extern int getpagesize (void)  __THROW __attribute__ ((__const__));
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:1016:12: error: storage class specified for parameter ‘getdtablesize’
+ 1016 | extern int getdtablesize (void) __THROW;
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:1026:12: error: storage class specified for parameter ‘truncate’
+ 1026 | extern int truncate (const char *__file, __off_t __length)
+      |            ^~~~~~~~
+/usr/include/unistd.h:1049:12: error: storage class specified for parameter ‘ftruncate’
+ 1049 | extern int ftruncate (int __fd, __off_t __length) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1070:12: error: storage class specified for parameter ‘brk’
+ 1070 | extern int brk (void *__addr) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:1076:14: error: storage class specified for parameter ‘sbrk’
+ 1076 | extern void *sbrk (intptr_t __delta) __THROW;
+      |              ^~~~
+/usr/include/unistd.h:1091:17: error: storage class specified for parameter ‘syscall’
+ 1091 | extern long int syscall (long int __sysno, ...) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:1114:12: error: storage class specified for parameter ‘lockf’
+ 1114 | extern int lockf (int __fd, int __cmd, __off_t __len) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:1150:12: error: storage class specified for parameter ‘fdatasync’
+ 1150 | extern int fdatasync (int __fildes);
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1159:14: error: storage class specified for parameter ‘crypt’
+ 1159 | extern char *crypt (const char *__key, const char *__salt)
+      |              ^~~~~
+lex.yy.c:470:12: error: storage class specified for parameter ‘yy_init_globals’
+  470 | static int yy_init_globals ( void );
+      |            ^~~~~~~~~~~~~~~
+lex.yy.c:509:12: error: storage class specified for parameter ‘yywrap’
+  509 | extern int yywrap ( void );
+      |            ^~~~~~
+lex.yy.c:515:17: error: storage class specified for parameter ‘yyunput’
+  515 |     static void yyunput ( int c, char *buf_ptr  );
+      |                 ^~~~~~~
+lex.yy.c:531:12: error: storage class specified for parameter ‘input’
+  531 | static int input ( void );
+      |            ^~~~~
+lex.yy.c:616:12: error: storage class specified for parameter ‘yylex’
+  616 | extern int yylex (void);
+      |            ^~~~~
+lex.yy.c:639:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  639 | {
+      | ^
+lex.yy.c:893:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  893 | {
+      | ^
+lex.yy.c:1031:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1031 | {
+      | ^
+lex.yy.c:1063:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1063 | {
+      | ^
+lex.yy.c:1088:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1088 | {
+      | ^
+lex.yy.c:1133:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1133 | {
+      | ^
+lex.yy.c:1206:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1206 | {
+      | ^
+lex.yy.c:1223:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1223 | {
+      | ^
+lex.yy.c:1254:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1254 | {
+      | ^
+lex.yy.c:1268:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1268 | {
+      | ^
+lex.yy.c:1296:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1296 | {
+      | ^
+lex.yy.c:1316:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1316 | {
+      | ^
+lex.yy.c:1343:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1343 | {
+      | ^
+lex.yy.c:1372:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1372 | {
+      | ^
+lex.yy.c:1402:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1402 | {
+      | ^
+lex.yy.c:1421:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1421 | {
+      | ^
+lex.yy.c:1470:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1470 | {
+      | ^
+lex.yy.c:1507:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1507 | {
+      | ^
+lex.yy.c:1520:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1520 | {
+      | ^
+lex.yy.c:1554:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1554 | {
+      | ^
+lex.yy.c:1582:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1582 | {
+      | ^
+lex.yy.c:1591:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1591 | {
+      | ^
+lex.yy.c:1599:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1599 | {
+      | ^
+lex.yy.c:1607:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1607 | {
+      | ^
+lex.yy.c:1616:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1616 | {
+      | ^
+lex.yy.c:1625:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1625 | {
+      | ^
+lex.yy.c:1637:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1637 | {
+      | ^
+lex.yy.c:1642:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1642 | {
+      | ^
+lex.yy.c:1647:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1647 | {
+      | ^
+lex.yy.c:1652:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1652 | {
+      | ^
+lex.yy.c:1657:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1657 | {
+      | ^
+lex.yy.c:1686:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1686 | {
+      | ^
+lex.yy.c:1732:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1732 | {
+      | ^
+lex.yy.c:1737:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1737 | {
+      | ^
+lex.yy.c:1750:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1750 | {
+      | ^
+q1a.l:22:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   22 | {
+      | ^
+q1a.l:27:24: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   27 | void sahihai(char* inp){
+      |                        ^
+q1a.l:31:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   31 | void galathai(char* inp){
+      |                         ^
+q1a.l:3:6: error: old-style parameter declarations in prototyped function definition
+    3 | void sahihai(char *)
+      |      ^~~~~~~
+q1a.l:35: error: expected ‘{’ at end of input
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+In file included from lex.yy.c:466:
+/usr/include/unistd.h: In function ‘sahihai’:
+/usr/include/unistd.h:255:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘typedef’
+  255 | typedef __useconds_t useconds_t;
+      | ^~~~~~~
+/usr/include/unistd.h:274:21: error: storage class specified for parameter ‘socklen_t’
+  274 | typedef __socklen_t socklen_t;
+      |                     ^~~~~~~~~
+/usr/include/unistd.h:287:12: error: storage class specified for parameter ‘access’
+  287 | extern int access (const char *__name, int __type) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:309:12: error: storage class specified for parameter ‘faccessat’
+  309 | extern int faccessat (int __fd, const char *__file, int __type, int __flag)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:339:16: error: storage class specified for parameter ‘lseek’
+  339 | extern __off_t lseek (int __fd, __off_t __offset, int __whence) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:358:12: error: storage class specified for parameter ‘close’
+  358 | extern int close (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:363:13: error: storage class specified for parameter ‘closefrom’
+  363 | extern void closefrom (int __lowfd) __THROW;
+      |             ^~~~~~~~~
+/usr/include/unistd.h:371:16: error: storage class specified for parameter ‘read’
+  371 | extern ssize_t read (int __fd, void *__buf, size_t __nbytes) __wur
+      |                ^~~~
+/usr/include/unistd.h:378:16: error: storage class specified for parameter ‘write’
+  378 | extern ssize_t write (int __fd, const void *__buf, size_t __n) __wur
+      |                ^~~~~
+/usr/include/unistd.h:389:16: error: storage class specified for parameter ‘pread’
+  389 | extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,
+      |                ^~~~~
+/usr/include/unistd.h:398:16: error: storage class specified for parameter ‘pwrite’
+  398 | extern ssize_t pwrite (int __fd, const void *__buf, size_t __n,
+      |                ^~~~~~
+/usr/include/unistd.h:437:12: error: storage class specified for parameter ‘pipe’
+  437 | extern int pipe (int __pipedes[2]) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:452:21: error: storage class specified for parameter ‘alarm’
+  452 | extern unsigned int alarm (unsigned int __seconds) __THROW;
+      |                     ^~~~~
+/usr/include/unistd.h:464:21: error: storage class specified for parameter ‘sleep’
+  464 | extern unsigned int sleep (unsigned int __seconds);
+      |                     ^~~~~
+/usr/include/unistd.h:472:21: error: storage class specified for parameter ‘ualarm’
+  472 | extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
+      |                     ^~~~~~
+/usr/include/unistd.h:480:12: error: storage class specified for parameter ‘usleep’
+  480 | extern int usleep (__useconds_t __useconds);
+      |            ^~~~~~
+/usr/include/unistd.h:489:12: error: storage class specified for parameter ‘pause’
+  489 | extern int pause (void);
+      |            ^~~~~
+/usr/include/unistd.h:493:12: error: storage class specified for parameter ‘chown’
+  493 | extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~
+/usr/include/unistd.h:498:12: error: storage class specified for parameter ‘fchown’
+  498 | extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:503:12: error: storage class specified for parameter ‘lchown’
+  503 | extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
+      |            ^~~~~~
+/usr/include/unistd.h:511:12: error: storage class specified for parameter ‘fchownat’
+  511 | extern int fchownat (int __fd, const char *__file, __uid_t __owner,
+      |            ^~~~~~~~
+/usr/include/unistd.h:517:12: error: storage class specified for parameter ‘chdir’
+  517 | extern int chdir (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:521:12: error: storage class specified for parameter ‘fchdir’
+  521 | extern int fchdir (int __fd) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:531:14: error: storage class specified for parameter ‘getcwd’
+  531 | extern char *getcwd (char *__buf, size_t __size) __THROW __wur;
+      |              ^~~~~~
+/usr/include/unistd.h:545:14: error: storage class specified for parameter ‘getwd’
+  545 | extern char *getwd (char *__buf)
+      |              ^~~~~
+/usr/include/unistd.h:552:12: error: storage class specified for parameter ‘dup’
+  552 | extern int dup (int __fd) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:555:12: error: storage class specified for parameter ‘dup2’
+  555 | extern int dup2 (int __fd, int __fd2) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:564:15: error: storage class specified for parameter ‘__environ’
+  564 | extern char **__environ;
+      |               ^~~~~~~~~
+/usr/include/unistd.h:572:12: error: storage class specified for parameter ‘execve’
+  572 | extern int execve (const char *__path, char *const __argv[],
+      |            ^~~~~~
+/usr/include/unistd.h:578:12: error: storage class specified for parameter ‘fexecve’
+  578 | extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
+      |            ^~~~~~~
+/usr/include/unistd.h:584:12: error: storage class specified for parameter ‘execv’
+  584 | extern int execv (const char *__path, char *const __argv[])
+      |            ^~~~~
+/usr/include/unistd.h:589:12: error: storage class specified for parameter ‘execle’
+  589 | extern int execle (const char *__path, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:594:12: error: storage class specified for parameter ‘execl’
+  594 | extern int execl (const char *__path, const char *__arg, ...)
+      |            ^~~~~
+/usr/include/unistd.h:599:12: error: storage class specified for parameter ‘execvp’
+  599 | extern int execvp (const char *__file, char *const __argv[])
+      |            ^~~~~~
+/usr/include/unistd.h:605:12: error: storage class specified for parameter ‘execlp’
+  605 | extern int execlp (const char *__file, const char *__arg, ...)
+      |            ^~~~~~
+/usr/include/unistd.h:619:12: error: storage class specified for parameter ‘nice’
+  619 | extern int nice (int __inc) __THROW __wur;
+      |            ^~~~
+/usr/include/unistd.h:624:13: error: storage class specified for parameter ‘_exit’
+  624 | extern void _exit (int __status) __attribute__ ((__noreturn__));
+      |             ^~~~~
+In file included from lex.yy.c:466:
+/usr/include/unistd.h:633:17: error: storage class specified for parameter ‘pathconf’
+  633 | extern long int pathconf (const char *__path, int __name)
+      |                 ^~~~~~~~
+/usr/include/unistd.h:637:17: error: storage class specified for parameter ‘fpathconf’
+  637 | extern long int fpathconf (int __fd, int __name) __THROW;
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:640:17: error: storage class specified for parameter ‘sysconf’
+  640 | extern long int sysconf (int __name) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:644:15: error: storage class specified for parameter ‘confstr’
+  644 | extern size_t confstr (int __name, char *__buf, size_t __len) __THROW
+      |               ^~~~~~~
+/usr/include/unistd.h:650:16: error: storage class specified for parameter ‘getpid’
+  650 | extern __pid_t getpid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:653:16: error: storage class specified for parameter ‘getppid’
+  653 | extern __pid_t getppid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:656:16: error: storage class specified for parameter ‘getpgrp’
+  656 | extern __pid_t getpgrp (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:659:16: error: storage class specified for parameter ‘__getpgid’
+  659 | extern __pid_t __getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:661:16: error: storage class specified for parameter ‘getpgid’
+  661 | extern __pid_t getpgid (__pid_t __pid) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:668:12: error: storage class specified for parameter ‘setpgid’
+  668 | extern int setpgid (__pid_t __pid, __pid_t __pgid) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:682:12: error: storage class specified for parameter ‘setpgrp’
+  682 | extern int setpgrp (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:689:16: error: storage class specified for parameter ‘setsid’
+  689 | extern __pid_t setsid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:693:16: error: storage class specified for parameter ‘getsid’
+  693 | extern __pid_t getsid (__pid_t __pid) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:697:16: error: storage class specified for parameter ‘getuid’
+  697 | extern __uid_t getuid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:700:16: error: storage class specified for parameter ‘geteuid’
+  700 | extern __uid_t geteuid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:703:16: error: storage class specified for parameter ‘getgid’
+  703 | extern __gid_t getgid (void) __THROW;
+      |                ^~~~~~
+/usr/include/unistd.h:706:16: error: storage class specified for parameter ‘getegid’
+  706 | extern __gid_t getegid (void) __THROW;
+      |                ^~~~~~~
+/usr/include/unistd.h:711:12: error: storage class specified for parameter ‘getgroups’
+  711 | extern int getgroups (int __size, __gid_t __list[]) __THROW __wur
+      |            ^~~~~~~~~
+/usr/include/unistd.h:722:12: error: storage class specified for parameter ‘setuid’
+  722 | extern int setuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:727:12: error: storage class specified for parameter ‘setreuid’
+  727 | extern int setreuid (__uid_t __ruid, __uid_t __euid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:732:12: error: storage class specified for parameter ‘seteuid’
+  732 | extern int seteuid (__uid_t __uid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:739:12: error: storage class specified for parameter ‘setgid’
+  739 | extern int setgid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:744:12: error: storage class specified for parameter ‘setregid’
+  744 | extern int setregid (__gid_t __rgid, __gid_t __egid) __THROW __wur;
+      |            ^~~~~~~~
+/usr/include/unistd.h:749:12: error: storage class specified for parameter ‘setegid’
+  749 | extern int setegid (__gid_t __gid) __THROW __wur;
+      |            ^~~~~~~
+/usr/include/unistd.h:778:16: error: storage class specified for parameter ‘fork’
+  778 | extern __pid_t fork (void) __THROWNL;
+      |                ^~~~
+/usr/include/unistd.h:786:16: error: storage class specified for parameter ‘vfork’
+  786 | extern __pid_t vfork (void) __THROW;
+      |                ^~~~~
+/usr/include/unistd.h:799:14: error: storage class specified for parameter ‘ttyname’
+  799 | extern char *ttyname (int __fd) __THROW;
+      |              ^~~~~~~
+/usr/include/unistd.h:803:12: error: storage class specified for parameter ‘ttyname_r’
+  803 | extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
+      |            ^~~~~~~~~
+/usr/include/unistd.h:809:12: error: storage class specified for parameter ‘isatty’
+  809 | extern int isatty (int __fd) __THROW;
+      |            ^~~~~~
+/usr/include/unistd.h:814:12: error: storage class specified for parameter ‘ttyslot’
+  814 | extern int ttyslot (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:819:12: error: storage class specified for parameter ‘link’
+  819 | extern int link (const char *__from, const char *__to)
+      |            ^~~~
+/usr/include/unistd.h:825:12: error: storage class specified for parameter ‘linkat’
+  825 | extern int linkat (int __fromfd, const char *__from, int __tofd,
+      |            ^~~~~~
+/usr/include/unistd.h:832:12: error: storage class specified for parameter ‘symlink’
+  832 | extern int symlink (const char *__from, const char *__to)
+      |            ^~~~~~~
+/usr/include/unistd.h:838:16: error: storage class specified for parameter ‘readlink’
+  838 | extern ssize_t readlink (const char *__restrict __path,
+      |                ^~~~~~~~
+/usr/include/unistd.h:847:12: error: storage class specified for parameter ‘symlinkat’
+  847 | extern int symlinkat (const char *__from, int __tofd,
+      |            ^~~~~~~~~
+/usr/include/unistd.h:851:16: error: storage class specified for parameter ‘readlinkat’
+  851 | extern ssize_t readlinkat (int __fd, const char *__restrict __path,
+      |                ^~~~~~~~~~
+/usr/include/unistd.h:858:12: error: storage class specified for parameter ‘unlink’
+  858 | extern int unlink (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~
+/usr/include/unistd.h:862:12: error: storage class specified for parameter ‘unlinkat’
+  862 | extern int unlinkat (int __fd, const char *__name, int __flag)
+      |            ^~~~~~~~
+/usr/include/unistd.h:867:12: error: storage class specified for parameter ‘rmdir’
+  867 | extern int rmdir (const char *__path) __THROW __nonnull ((1));
+      |            ^~~~~
+/usr/include/unistd.h:871:16: error: storage class specified for parameter ‘tcgetpgrp’
+  871 | extern __pid_t tcgetpgrp (int __fd) __THROW;
+      |                ^~~~~~~~~
+/usr/include/unistd.h:874:12: error: storage class specified for parameter ‘tcsetpgrp’
+  874 | extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __THROW;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:881:14: error: storage class specified for parameter ‘getlogin’
+  881 | extern char *getlogin (void);
+      |              ^~~~~~~~
+/usr/include/unistd.h:889:12: error: storage class specified for parameter ‘getlogin_r’
+  889 | extern int getlogin_r (char *__name, size_t __name_len) __nonnull ((1))
+      |            ^~~~~~~~~~
+/usr/include/unistd.h:895:12: error: storage class specified for parameter ‘setlogin’
+  895 | extern int setlogin (const char *__name) __THROW __nonnull ((1));
+      |            ^~~~~~~~
+In file included from /usr/include/x86_64-linux-gnu/bits/getopt_posix.h:27,
+                 from /usr/include/unistd.h:903,
+                 from lex.yy.c:466:
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:36:14: error: storage class specified for parameter ‘optarg’
+   36 | extern char *optarg;
+      |              ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:50:12: error: storage class specified for parameter ‘optind’
+   50 | extern int optind;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:55:12: error: storage class specified for parameter ‘opterr’
+   55 | extern int opterr;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:59:12: error: storage class specified for parameter ‘optopt’
+   59 | extern int optopt;
+      |            ^~~~~~
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:91:12: error: storage class specified for parameter ‘getopt’
+   91 | extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
+      |            ^~~~~~
+In file included from lex.yy.c:466:
+/usr/include/unistd.h:911:12: error: storage class specified for parameter ‘gethostname’
+  911 | extern int gethostname (char *__name, size_t __len) __THROW __nonnull ((1))
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:919:12: error: storage class specified for parameter ‘sethostname’
+  919 | extern int sethostname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:924:12: error: storage class specified for parameter ‘sethostid’
+  924 | extern int sethostid (long int __id) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:930:12: error: storage class specified for parameter ‘getdomainname’
+  930 | extern int getdomainname (char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:933:12: error: storage class specified for parameter ‘setdomainname’
+  933 | extern int setdomainname (const char *__name, size_t __len)
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:939:12: error: storage class specified for parameter ‘vhangup’
+  939 | extern int vhangup (void) __THROW;
+      |            ^~~~~~~
+/usr/include/unistd.h:942:12: error: storage class specified for parameter ‘revoke’
+  942 | extern int revoke (const char *__file) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:950:12: error: storage class specified for parameter ‘profil’
+  950 | extern int profil (unsigned short int *__sample_buffer, size_t __size,
+      |            ^~~~~~
+/usr/include/unistd.h:958:12: error: storage class specified for parameter ‘acct’
+  958 | extern int acct (const char *__name) __THROW;
+      |            ^~~~
+/usr/include/unistd.h:962:14: error: storage class specified for parameter ‘getusershell’
+  962 | extern char *getusershell (void) __THROW;
+      |              ^~~~~~~~~~~~
+/usr/include/unistd.h:963:13: error: storage class specified for parameter ‘endusershell’
+  963 | extern void endusershell (void) __THROW; /* Discard cached info.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:964:13: error: storage class specified for parameter ‘setusershell’
+  964 | extern void setusershell (void) __THROW; /* Rewind and re-read the file.  */
+      |             ^~~~~~~~~~~~
+/usr/include/unistd.h:970:12: error: storage class specified for parameter ‘daemon’
+  970 | extern int daemon (int __nochdir, int __noclose) __THROW __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:977:12: error: storage class specified for parameter ‘chroot’
+  977 | extern int chroot (const char *__path) __THROW __nonnull ((1)) __wur;
+      |            ^~~~~~
+/usr/include/unistd.h:981:14: error: storage class specified for parameter ‘getpass’
+  981 | extern char *getpass (const char *__prompt) __nonnull ((1));
+      |              ^~~~~~~
+/usr/include/unistd.h:989:12: error: storage class specified for parameter ‘fsync’
+  989 | extern int fsync (int __fd);
+      |            ^~~~~
+/usr/include/unistd.h:1002:17: error: storage class specified for parameter ‘gethostid’
+ 1002 | extern long int gethostid (void);
+      |                 ^~~~~~~~~
+/usr/include/unistd.h:1005:13: error: storage class specified for parameter ‘sync’
+ 1005 | extern void sync (void) __THROW;
+      |             ^~~~
+/usr/include/unistd.h:1011:12: error: storage class specified for parameter ‘getpagesize’
+ 1011 | extern int getpagesize (void)  __THROW __attribute__ ((__const__));
+      |            ^~~~~~~~~~~
+/usr/include/unistd.h:1016:12: error: storage class specified for parameter ‘getdtablesize’
+ 1016 | extern int getdtablesize (void) __THROW;
+      |            ^~~~~~~~~~~~~
+/usr/include/unistd.h:1026:12: error: storage class specified for parameter ‘truncate’
+ 1026 | extern int truncate (const char *__file, __off_t __length)
+      |            ^~~~~~~~
+/usr/include/unistd.h:1049:12: error: storage class specified for parameter ‘ftruncate’
+ 1049 | extern int ftruncate (int __fd, __off_t __length) __THROW __wur;
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1070:12: error: storage class specified for parameter ‘brk’
+ 1070 | extern int brk (void *__addr) __THROW __wur;
+      |            ^~~
+/usr/include/unistd.h:1076:14: error: storage class specified for parameter ‘sbrk’
+ 1076 | extern void *sbrk (intptr_t __delta) __THROW;
+      |              ^~~~
+/usr/include/unistd.h:1091:17: error: storage class specified for parameter ‘syscall’
+ 1091 | extern long int syscall (long int __sysno, ...) __THROW;
+      |                 ^~~~~~~
+/usr/include/unistd.h:1114:12: error: storage class specified for parameter ‘lockf’
+ 1114 | extern int lockf (int __fd, int __cmd, __off_t __len) __wur;
+      |            ^~~~~
+/usr/include/unistd.h:1150:12: error: storage class specified for parameter ‘fdatasync’
+ 1150 | extern int fdatasync (int __fildes);
+      |            ^~~~~~~~~
+/usr/include/unistd.h:1159:14: error: storage class specified for parameter ‘crypt’
+ 1159 | extern char *crypt (const char *__key, const char *__salt)
+      |              ^~~~~
+lex.yy.c:473:12: error: storage class specified for parameter ‘yy_init_globals’
+  473 | static int yy_init_globals ( void );
+      |            ^~~~~~~~~~~~~~~
+lex.yy.c:512:12: error: storage class specified for parameter ‘yywrap’
+  512 | extern int yywrap ( void );
+      |            ^~~~~~
+lex.yy.c:518:17: error: storage class specified for parameter ‘yyunput’
+  518 |     static void yyunput ( int c, char *buf_ptr  );
+      |                 ^~~~~~~
+lex.yy.c:534:12: error: storage class specified for parameter ‘input’
+  534 | static int input ( void );
+      |            ^~~~~
+lex.yy.c:619:12: error: storage class specified for parameter ‘yylex’
+  619 | extern int yylex (void);
+      |            ^~~~~
+lex.yy.c:642:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  642 | {
+      | ^
+lex.yy.c:896:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  896 | {
+      | ^
+lex.yy.c:1034:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1034 | {
+      | ^
+lex.yy.c:1066:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1066 | {
+      | ^
+lex.yy.c:1091:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1091 | {
+      | ^
+lex.yy.c:1136:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1136 | {
+      | ^
+lex.yy.c:1209:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1209 | {
+      | ^
+lex.yy.c:1226:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1226 | {
+      | ^
+lex.yy.c:1257:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1257 | {
+      | ^
+lex.yy.c:1271:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1271 | {
+      | ^
+lex.yy.c:1299:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1299 | {
+      | ^
+lex.yy.c:1319:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1319 | {
+      | ^
+lex.yy.c:1346:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1346 | {
+      | ^
+lex.yy.c:1375:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1375 | {
+      | ^
+lex.yy.c:1405:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1405 | {
+      | ^
+lex.yy.c:1424:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1424 | {
+      | ^
+lex.yy.c:1473:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1473 | {
+      | ^
+lex.yy.c:1510:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1510 | {
+      | ^
+lex.yy.c:1523:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1523 | {
+      | ^
+lex.yy.c:1557:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1557 | {
+      | ^
+lex.yy.c:1585:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1585 | {
+      | ^
+lex.yy.c:1594:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1594 | {
+      | ^
+lex.yy.c:1602:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1602 | {
+      | ^
+lex.yy.c:1610:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1610 | {
+      | ^
+lex.yy.c:1619:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1619 | {
+      | ^
+lex.yy.c:1628:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1628 | {
+      | ^
+lex.yy.c:1640:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1640 | {
+      | ^
+lex.yy.c:1645:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1645 | {
+      | ^
+lex.yy.c:1650:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1650 | {
+      | ^
+lex.yy.c:1655:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1655 | {
+      | ^
+lex.yy.c:1660:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1660 | {
+      | ^
+lex.yy.c:1689:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1689 | {
+      | ^
+lex.yy.c:1735:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1735 | {
+      | ^
+lex.yy.c:1740:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1740 | {
+      | ^
+lex.yy.c:1753:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+ 1753 | {
+      | ^
+q1a.l:22:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   22 | {
+      | ^
+q1a.l:27:24: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   27 | void sahihai(char* inp){
+      |                        ^
+q1a.l:31:25: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   31 | void galathai(char* inp){
+      |                         ^
+q1a.l:3:6: error: old-style parameter declarations in prototyped function definition
+    3 | void sahihai(char *)
+      |      ^~~~~~~
+q1a.l:35: error: expected ‘{’ at end of input
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+q1a.l: In function ‘main’:
+q1a.l:23:9: error: called object ‘yytext’ is not a function or function pointer
+   23 |         yytext();
+      |         ^~~~~~
+lex.yy.c:450:7: note: declared here
+  450 | char *yytext;
+      |       ^~~~~~
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi test.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+1001
+Invalid String.
+11101
+
+Valid String.
+111111
+
+Valid String.
+00000000
+
+Invalid String.
+1111100
+
+Invalid String.
+010101111
+
+Valid String.
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+101010
+Invalid String.101010
+
+Invalid String.^[[A^[[A^[[A^[:w
+
+Invalid String.10111 
+
+Valid String.^[[A^[[A^[[A^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+100001
+Invalid String.
+101010
+
+Invalid String.
+1110101010
+
+Invalid String.
+^[:^[[3~^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q1a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+111
+Valid String.
+1111
+
+Valid String.
+1110111
+
+Valid String.
+111010101
+
+Valid String.
+0000000
+
+Invalid String.
+01010101111
+
+Valid String.
+01010101111010101000
+
+Invalid String.
+^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q2a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q2a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+xyz
+Invalid String.
+xxyyyz
+
+Invalid String.
+^[:^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ :wq
+:wq: command not found
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q2a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ lex q2a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ gcc lex.yy.c -ll
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ./a.out
+xyz
+Invalid String.
+Invalid String.
+Invalid String.
+xxyyyz
+
+Valid String.
+Valid String.
+Invalid String.
+:wq^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ ^C
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ vi q2a.l
+ssl11@CSE-SSL-11:~/Desktop/CS22B028$ 
+
+

@@ -1,0 +1,15 @@
+fact = factorial (n);
+label = get_label ();
+get_char ();
+fun (get_char());
+c = matrix_addition (a, b);
+a(b(c(d())));
+var = fun (a,b+c,d);
+a(b,c+d,e*f);
+fun(34);
+var = a(34);
+2=a();
+a(();
+a());
+a(a,,b);
+a(a**b);

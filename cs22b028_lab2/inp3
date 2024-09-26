@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+// this is a comment
+// this is another comment
+// Hello World
+
+int main(){
+    float              n=3.14159;
+    int a[10];
+    int b;
+    printf("%d",n);
+    scanf("%d",&b);
+    if(n>b){
+        printf("n is greater than b");
+    }
+    else{
+        printf("b is greater than n");
+    }
+    for(int i=0;i<10;i++){
+        printf("%d\n",i);
+    }
+    return 0;
+}

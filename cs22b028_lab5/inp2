@@ -1,0 +1,13 @@
+rem = a % 6;
+r0 = (a * b) + c - (b / a);
+r1 = (x / y) * z - (x % y);
+r2 = ((a - b) * c) / (a + b);
+rem = a % 2.5;
+r3 = (x + y * z;
+diff = x y;
+r4 = -x * y + (x - y) * 2;
+r4 = (x * y) + (a - b);
+c = a+b;
+c = (a*b)+g;
+d = (c+d)*e;
+e = (            a-                b)        /             c;
